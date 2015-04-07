@@ -164,6 +164,12 @@
                             processSelector(rule[cssRules][j].selectorText);
                         }
                     }
+                    // Handle @imported stylesheets
+                    else if (rule.styleSheet && rule.styleSheet.cssRules && rule.styleSheet.cssRules.length) {
+                      for (j = 0; j < rule.styleSheet.cssRules.length; j++) {
+                        processSelector(rule.styleSheet.cssRules[j].selectorText);
+                      }
+                    }
                     else {
                         processSelector(rule.selectorText);
                     }
